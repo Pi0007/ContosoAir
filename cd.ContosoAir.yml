@@ -5,11 +5,10 @@
 
 trigger:
 - none
-
 resources:
  pipelines:
   - pipeline: buildContosoAir # identifier for the resource used in pipeline resource variables
-    source: Student1-44192070.ContosoAir # name of the pipeline that produces the artifact
+    source: Pi0007.ContosoAir # name of the pipeline that produces the artifact
     trigger:
      branches:
       include:
@@ -44,7 +43,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 
+    azureSubscription: 'Azure Connection'
     appType: 'webApp'
     WebAppName: '$(web_prefix)-$(web_site)-$(web_environment)'
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
